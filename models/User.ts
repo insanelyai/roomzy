@@ -1,6 +1,9 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUser extends Document {
+  username: string;
+  email: string;
+  password: string;
   dob: Date;
   collegeDetails?: {
     name: string;
@@ -28,6 +31,20 @@ export interface IUser extends Document {
 
 const UserSchema: Schema = new Schema(
   {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
     dob: {
       type: Date,
       required: true,
@@ -72,12 +89,18 @@ const UserSchema: Schema = new Schema(
       type: Map,
       of: String,
     },
+    role: {
+      type: String,
+      default: "user",
+      enum: ["user", "admin"], // Add more roles if needed
+      required: true,
+    },
   },
+  
   {
     timestamps: true, // Adds createdAt and updatedAt fields
   }
 );
 
 const user = mongoose.models.User || mongoose.model("User", UserSchema);
-
 export default user;
