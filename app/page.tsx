@@ -1,11 +1,14 @@
-import { connect } from "@/lib/connect";
-import Navbar from "@/components/Header/Navbar";
+
+import Navbar from "@/components/header/Navbar";
+import LogIn from "@/components/froms/logIn"
+import SignIn from "@/components/froms/signIn"
 import Image from "next/image";
 
-
-connect()
 export default function Home() {
-  return (
+  return (<>
     <Navbar/>
+    <LogIn/>
+    <SignIn/>
+  </>
   );
 }
