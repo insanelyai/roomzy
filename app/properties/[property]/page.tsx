@@ -1,12 +1,12 @@
+'use client'
 import { useState } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ScrollArea } from "@/components/ui/scroll-area"
-
-
 import { Star } from 'lucide-react'
+import { Button } from "@/components/ui/button"
 
-export default function RoomInfoPage() {
+export default function page() {
   const [mainImage, setMainImage] = useState("/placeholder.svg?height=400&width=600")
   const smallImages = [
     "/placeholder.svg?height=100&width=150",
@@ -91,6 +91,11 @@ export default function RoomInfoPage() {
                     <li>In-room safe and air conditioning</li>
                     <li>24/7 room service</li>
                   </ul>
+                </div>
+                <div className="mt-4">
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                    Interested
+                  </Button>
                 </div>
               </div>
             </CardContent>
