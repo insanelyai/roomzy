@@ -1,5 +1,5 @@
 
-import Navbar from "@/components/header/Navbar";
+import Navbar from "@/components/Header/Navbar";
 import LogIn from "@/components/froms/logIn"
 import SignIn from "@/components/froms/signIn"
 import Image from "next/image";
