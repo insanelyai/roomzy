@@ -1,3 +1,6 @@
+"use client";
+
+
 import React, { useState, FormEvent } from 'react';
 
 // Define styles with React.CSSProperties

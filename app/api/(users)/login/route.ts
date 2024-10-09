@@ -1,5 +1,5 @@
 import { connect } from "@/lib/connect";
-import User from "@/models/User";
+import User from "@/models/User"
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
