@@ -1,7 +1,7 @@
 
 import Navbar from "@/components/Header/Navbar";
-import LogIn from "@/components/froms/logIn"
-import SignIn from "@/components/froms/signIn"
+import LogIn from "@/components/Form/logIn"
+import SignIn from "@/components/Form/signIn"
 import Image from "next/image";
 
 export default function Home() {
