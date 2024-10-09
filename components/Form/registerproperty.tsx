@@ -1,6 +1,5 @@
 'use client'
-
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -12,6 +11,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { toast } from "@/hooks/use-toast"
+import { X } from 'lucide-react'
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
 const propertySchema = z.object({
   propertyName: z.string().min(1, "Property name is required"),
@@ -24,19 +27,27 @@ const propertySchema = z.object({
   price: z.number().min(0, "Price must be a positive number"),
   contactEmail: z.string().email("Invalid email address"),
   contactPhone: z.string().regex(/^\+?[1-9]\d{1,14}$/, "Invalid phone number"),
+  images: z.array(z.instanceof(File)
+    .refine(file => file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
+    .refine(file => ACCEPTED_IMAGE_TYPES.includes(file.type), ".jpg, .jpeg, .png and .webp files are accepted.")
+  ).max(5, "You can upload up to 5 images"),
 })
 
 type PropertyFormData = z.infer<typeof propertySchema>
 
 export default function PropertyRegistrationForm() {
   const [amenities, setAmenities] = useState<string[]>([])
+  const [previewImages, setPreviewImages] = useState<string[]>([])
 
-  const { register, handleSubmit, control, formState: { errors } } = useForm<PropertyFormData>({
+  const { register, handleSubmit, control, formState: { errors }, setValue, watch } = useForm<PropertyFormData>({
     resolver: zodResolver(propertySchema),
     defaultValues: {
       amenities: [],
+      images: [],
     },
   })
+
+  const watchImages = watch("images")
 
   const onSubmit = (data: PropertyFormData) => {
     console.log(data)
@@ -45,6 +56,19 @@ export default function PropertyRegistrationForm() {
       description: "Your property has been successfully registered.",
     })
   }
+
+  const handleImageUpload = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || [])
+    setValue('images', files, { shouldValidate: true })
+
+    const newPreviewImages = files.map(file => URL.createObjectURL(file))
+    setPreviewImages(prevImages => [...prevImages, ...newPreviewImages])
+  }, [setValue])
+
+  const removeImage = useCallback((index: number) => {
+    setValue('images', watchImages.filter((_, i) => i !== index), { shouldValidate: true })
+    setPreviewImages(prevImages => prevImages.filter((_, i) => i !== index))
+  }, [setValue, watchImages])
 
   return (
     <Card className="w-full max-w-2xl">
@@ -150,6 +174,33 @@ export default function PropertyRegistrationForm() {
             <Label htmlFor="contactPhone">Contact Phone</Label>
             <Input id="contactPhone" type="tel" {...register("contactPhone")} />
             {errors.contactPhone && <p className="text-red-500 text-sm">{errors.contactPhone.message}</p>}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="images">Property Images</Label>
+            <Input 
+              id="images" 
+              type="file" 
+              accept=".jpg,.jpeg,.png,.webp"
+              multiple
+              onChange={handleImageUpload}
+              className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+            />
+            {errors.images && <p className="text-red-500 text-sm">{errors.images.message}</p>}
+            <div className="grid grid-cols-3 gap-4 mt-4">
+              {previewImages.map((src, index) => (
+                <div key={index} className="relative">
+                  <img src={src} alt={`Preview ${index + 1}`} className="w-full h-32 object-cover rounded-md" />
+                  <button
+                    type="button"
+                    onClick={() => removeImage(index)}
+                    className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
+                  >
+                    <X size={16} />
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         </CardContent>
         <CardFooter>
