@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Bed, Bath, Ruler, DollarSign, MapPin, Users } from "lucide-react";
+import { Bed, Ruler, IndianRupee, MapPin, Users } from "lucide-react";
 
 interface PropertyCardProps {
   property: {
@@ -30,7 +30,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           className="w-full h-48 object-cover"
         />
         <div className="absolute top-2 left-2 bg-white px-2 py-1 rounded-md text-sm font-semibold text-blue-600">
-          ₹{property.price}/mo
+          ₹{property.price.toLocaleString('en-IN')}/mo
         </div>
       </div>
       <CardContent className="p-4">
@@ -56,7 +56,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
               key={index}
               className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full"
             >
-              <DollarSign className="w-3 h-3 inline mr-1" />
+              <IndianRupee className="w-3 h-3 inline mr-1" />
               {option}
             </span>
           ))}
@@ -67,7 +67,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full">Details</Button>
+        <Button className="w-full">View Details</Button>
       </CardFooter>
     </Card>
   );

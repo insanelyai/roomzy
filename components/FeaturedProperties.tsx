@@ -14,10 +14,10 @@ interface Property {
 }
 
 interface FeaturedPropertiesProps {
-  properties?: Property[]  
+  properties: Property[]  
 }
 
-export default function FeaturedProperties({ properties = [] }: FeaturedPropertiesProps) {
+export default function FeaturedProperties({ properties }: FeaturedPropertiesProps) {
   return (
     <section className="py-12">
       <div className="container mx-auto px-4">
@@ -28,7 +28,7 @@ export default function FeaturedProperties({ properties = [] }: FeaturedProperti
               <PropertyCard key={property.id} property={property} />
             ))
           ) : (
-            <p>No properties to display.</p>
+            <p className="col-span-full text-center text-lg text-gray-500">No properties found matching your criteria.</p>
           )}
         </div>
       </div>
