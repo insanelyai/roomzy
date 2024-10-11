@@ -37,51 +37,50 @@ Roomzy not only provides a practical solution to finding roommates but also has 
 
 ---
 
-## Installation
-
-To get a local copy up and running, follow these steps:
-
-### Prerequisites
-
-- Node.js
-- npm or yarn
-- MongoDB (or use a MongoDB Atlas URI)
-
-### Steps
+### Installation Steps
 
 1. **Clone the repository:**
-
    ```bash
    git clone https://github.com/insanelyai/roomzy.git
+   ```
 
 2. **Navigate into the project directory:**
-
    ```bash
    cd roomzy
-# Install the dependencies:
+   ```
 
-# If you are using npm:
-npm install
+3. **Install the dependencies:**
+   
+   If you are using npm:
+   ```bash
+   npm install
+   ```
+   
+   Or if you are using yarn:
+   ```bash
+   yarn install
+   ```
 
-# Or if you are using yarn:
-yarn install
+4. **Set up environment variables:**
 
-# Set up environment variables:
-# Create a .env.local file in the root of your project and add the following variables:
+   Create a `.env.local` file in the root of your project and add the following variables:
+   ```
+   JWT_SECRET=<your_jwt_secret>
+   FALLBACK_MONGODB_URL="your_mongodb_connection_string"
+   NEXT_PUBLIC_STRIPE_PUBLIC_KEY=<your_stripe_public_key>
+   STRIPE_SECRET_KEY=<your_stripe_secret_key>
+   ```
 
-JWT_SECRET=<your_jwt_secret>
-FALLBACK_MONGODB_URL="your_mongodb_connection_string"
-NEXT_PUBLIC_STRIPE_PUBLIC_KEY=<your_stripe_public_key>
-STRIPE_SECRET_KEY=<your_stripe_secret_key>
+5. **Run the application:**
 
-# Run the application:
+   For development mode:
+   ```bash
+   npm run dev
+   ```
+   
+   Or if using yarn:
+   ```bash
+   yarn dev
+   ```
 
-# For development mode:
-npm run dev
-
-# Or if using yarn:
-yarn dev
-
-# Open the application:
-# Open your browser and go to http://localhost:3000 to see Roomzy in action.
 
