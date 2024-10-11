@@ -1,38 +1,55 @@
-## Roomzy
+# Roomzy - A Roommate Finding Platform
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Overview
 
-## Getting Started
+**Roomzy** is a platform designed to simplify the process of finding compatible roommates, specifically for students and working professionals in Mumbai. By leveraging the power of **Next.js**, **MongoDB**, and **ShadCN UI**, Roomzy connects users with potential roommates and shared living spaces, fostering community-driven solutions that promote affordability, trust, and sustainability.
 
-First, run the development server:
+## Why Roomzy?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The challenge of finding affordable accommodations and trustworthy roommates is common, particularly in a city like Mumbai. Roomzy aims to address this by:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Simplifying the roommate search process
+- Reducing costs for users
+- Building trust through a feedback mechanism
+- Offering a centralized, low-maintenance platform
+- Encouraging sustainable urban development through shared living spaces
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Affordable Solutions:** Find shared accommodations that suit your budget.
+- **Trustworthy Matches:** A feedback system ensures you can trust your potential roommates.
+- **Community Driven:** Promotes a sense of shared responsibility among roommates.
+- **Environmentally Friendly:** Encourages sustainable living through shared resources.
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend:** Next.js
+- **UI:** ShadCN UI
+- **Database:** MongoDB
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Impact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Roomzy not only provides a practical solution to finding roommates but also has broader social, economic, and environmental benefits:
 
-## Deploy on Vercel
+- **Economic:** Alleviates the financial burden of high living costs in Mumbai.
+- **Social:** Builds a sense of community and shared responsibility among users.
+- **Environmental:** Supports sustainable living practices through shared spaces.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Installation
+
+To get a local copy up and running, follow these steps:
+
+### Prerequisites
+
+- Node.js
+- npm or yarn
+- MongoDB (or use a MongoDB Atlas URI)
+
+### Steps
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/insanelyai/roomzy.git
