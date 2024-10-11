@@ -53,3 +53,35 @@ To get a local copy up and running, follow these steps:
 
    ```bash
    git clone https://github.com/insanelyai/roomzy.git
+
+2. **Navigate into the project directory:**
+
+   ```bash
+   cd roomzy
+# Install the dependencies:
+
+# If you are using npm:
+npm install
+
+# Or if you are using yarn:
+yarn install
+
+# Set up environment variables:
+# Create a .env.local file in the root of your project and add the following variables:
+
+JWT_SECRET=<your_jwt_secret>
+FALLBACK_MONGODB_URL="your_mongodb_connection_string"
+NEXT_PUBLIC_STRIPE_PUBLIC_KEY=<your_stripe_public_key>
+STRIPE_SECRET_KEY=<your_stripe_secret_key>
+
+# Run the application:
+
+# For development mode:
+npm run dev
+
+# Or if using yarn:
+yarn dev
+
+# Open the application:
+# Open your browser and go to http://localhost:3000 to see Roomzy in action.
+
